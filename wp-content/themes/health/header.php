@@ -24,12 +24,14 @@
 	<header id="masthead" class="site-header" role="banner">
 		<div class="site-branding">
         
+       
 		<?php
         if( ( of_get_option( 'health_show_header_logo_text', 'text_only' ) == 'both' || of_get_option( 'health_show_header_logo_text', 'text_only' ) == 'logo_only' ) && of_get_option( 'health_header_logo_image', '' ) != '' ) {
         ?>
             <div class="header-logo-image">
                 <a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><img src="<?php echo esc_url(of_get_option( 'health_header_logo_image', '' )); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>"></a>
             </div><!-- #header-logo-image -->
+        
         <?php
         }
 
@@ -54,13 +56,18 @@
 					?>
                 </div>
                 <?php get_search_form(); ?>
+
             </div>    
+
+
             <div class="clear"></div>
 		</div><!-- .site-branding -->
 
 
 	</header><!-- #masthead -->
     
+
+
     <nav id="site-navigation" class="main-navigation <?php if((is_home())or(is_single())or(is_search())or(is_archive())){echo 'mr';}?>" role="navigation">
         <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php _e( 'Menu', 'health' ); ?></button>
         <?php wp_nav_menu( array( 'theme_location' => 'menu-1', 'menu_id' => 'primary-menu' ) ); ?>

@@ -14,13 +14,22 @@
 
 		
 		<div class="site-info">
-			<?php printf( __( 'Proudly powered by %s', 'health' ), 'WordPress' ); ?>
-			<span class="sep"> &amp; </span>
+			 
+			<span class="sep"> Theme by </span>
 			<?php printf(
-			__( '%1$s by %2$s.', 'health' ),
-			__('Health WordPress Theme', 'health'),
+			
 			'<strong><a href="http://dinozoom.com/">'.__('Dinozoom', 'health' ).'</a></strong>' ); ?>
 		</div><!-- .site-info -->
+
+
+<div class="devloper-info" align='right'>
+			 
+			<span class="txt"> Copyright 2015 falcon Team </span>
+			
+ 
+		</div><!-- .site-info -->
+
+
 
 	</footer><!-- #colophon -->
     
@@ -28,6 +37,8 @@
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
+
+
 
 </body>
 </html>
