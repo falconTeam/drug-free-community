@@ -12,6 +12,10 @@ if ( ! isset( $content_width ) ) {
 	$content_width = 670; /* pixels */
 }
 
+update_option('siteurl', WP_SITEURL);
+update_option('home', WP_HOME);
+
+
 if ( ! function_exists( 'health_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
