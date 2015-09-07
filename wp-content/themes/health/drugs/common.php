@@ -1,6 +1,6 @@
 <?php 
 // change path as required 
-$sitepath = 'http://localhost/wordpress/wp-content/themes/health/drugs';
+$sitepath = get_template_directory_uri().'/drugs'
 
 ?>
  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">

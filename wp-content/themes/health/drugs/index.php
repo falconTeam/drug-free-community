@@ -30,10 +30,10 @@ get_header(); ?>
         </div>
         <br>
         <div class="row" id='advanceDiv' style="display:none;">
-            <div class="col-md-8">
+            <div class="col-md-9">
             <div class="row">
                 <div class="col-md-4">
-                    <strong>Age Restriction</strong>
+                    <strong>Age </strong>
                 <select id='txtAgeRestriction' name='txtAgeRestriction' style="height:30px;margin:5px;">
                     <option value = 'All' selected>All</option>
                     <option value = 'Under-18'>Under-18</option>
@@ -64,7 +64,7 @@ get_header(); ?>
         </div>
         <br>
         
-        <div id='detailsDiv'>            
+        <div id='detailsDiv' >            
          </div>
             
         </div>

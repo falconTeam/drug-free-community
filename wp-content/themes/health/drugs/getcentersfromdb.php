@@ -2,6 +2,8 @@
 
 function getLatLongFromPostcode($postcode, $country, $gmapApiKey)
 {
+    
+
     /* remove spaces from postcode */
     $postcode = urlencode(trim($postcode));
  
@@ -42,7 +44,7 @@ $longitude = (double)$xml->result->geometry->location->lng;
 include_once 'connection.php';
 
 
-$sql = "SELECT * FROM  rehabilitation where longitude=$longitude AND latitude = $latitude ";
+$sql = "SELECT * FROM  rehabilitation where suburbid=$postcode";
 
 if( !empty($condition) ){
      $sql .= $condition;
@@ -57,19 +59,19 @@ if( !($results = $mysqli->query($sql, MYSQLI_STORE_RESULT) ))
 }
 $numRecords =  $results->num_rows;
 
-$html = '<div class="row"><div class="col-md-8" align="right">';
-$html .= '<table class="table table-striped table-hover table-bordered" align="right" >';
+$html = '<div class="row"><div class="col-md-8" align="center">';
+$html .= '<table class="table table-striped table-hover table-bordered" align="right"  width="80%">';
 if($numRecords > 0){
 while( $row = $results->fetch_assoc() ){
     
     // db angel
     $angels = $row['longitude'] . ',' . $row['latitude'];
     
-    $rowHtml = "<tr align='right'><td><strong>{{$row['address']}, {$row['suburb']}</strong>&nbsp;&nbsp;";    
+    $rowHtml = "<tr align='right'><td><strong>Address : </strong>{$row['address']}, {$row['suburb']},<strong>Center Name : </strong>{$row['centername']}</strong>&nbsp;&nbsp;"; 
     $rowHtml .= "<a class='btn btn-info' href='{$row['url']}' target='_blank'>Visit Us</a>&nbsp;&nbsp;";
     $rowHtml .= "<button class='btn btn-info' id='btnShowMap' value='Show Map' title='$angels'>Show Map</button><br><br>";
     
-    $rowHtml .= '<div class="map-canvas" style="width:400px;height:400px;"></div>';
+    $rowHtml .= '<div class="map-canvas" style="width:600px;height:300px;"></div>';
     
     $rowHtml .= "</td></tr>";
     
