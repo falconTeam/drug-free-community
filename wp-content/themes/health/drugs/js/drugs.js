@@ -4,7 +4,7 @@ $(document).ready(function(){
       var moreoptions = $('#advanceDiv').is(':visible');
       // fetch all centers 
       var postalCode = $('#txtPostCode').val().trim();     
-      if(postalCode.length != 4){
+      if(postalCode.length !=4){
           alert('Enter 4 digit postal code');
           $('#txtPostCode').focus();
           return;
@@ -47,30 +47,32 @@ $(document).ready(function(){
   
   // show map
   $(document).on('click', '#btnShowMap', function(){      
-    var mapOptions = {
-    zoom: 15,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
-    var txt = $(this).attr('title');
-    
-    //alert(txt);
-    
-    var angels = txt.split(',');
-    var latD = parseFloat(angels[1]);
-    var lngD = parseFloat(angels[0]);
+      var mapOptions = {
+        zoom: 15,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      }
+      var txt = $(this).attr('title');
+      
+      //alert(txt);
+      
+      var angels = txt.split(',');
+      var latD = parseFloat(angels[1]);
+      var lngD = parseFloat(angels[0]);
 
-    var location = {lat: latD, lng: lngD};
-    var marker;
-    var mapDiv = $(this).siblings('.map-canvas')[0];
-    map = new google.maps.Map(mapDiv, mapOptions);
-    map.setCenter(location);
-    if(marker)
-    marker.setMap(null);
-    marker = new google.maps.Marker({
-    map: map,
-    position: location,
-    draggable: true
-});      
+      var location = {lat: latD, lng: lngD};
+      var marker;
+      console.log($(this));
+      var mapDiv = $(this).siblings('.map-canvas')[0];
+      map = new google.maps.Map(mapDiv, mapOptions);
+      map.setCenter(location);
+      if(marker)
+        marker.setMap(null);
+
+      marker = new google.maps.Marker({
+          map: map,
+          position: location,
+          draggable: true
+      });      
   });
   
 });

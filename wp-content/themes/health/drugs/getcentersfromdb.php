@@ -1,26 +1,26 @@
 <?php
 
-function getLatLongFromPostcode($postcode, $country, $gmapApiKey)
-{
-    
 
-    /* remove spaces from postcode */
-    $postcode = urlencode(trim($postcode));
- 
-    /* connect to the google geocode service */    
-    $file = "https://maps.google.com/maps/api/geocode/xml?address=$postcode,+AU&key=AIzaSyA5papzfh_eu6xDIvk4CLmyQ_0pDcKYJA8";
-    //echo $file;
-    $xml = simplexml_load_file($file) or die("url not loading");
-  
-    return ($xml);
-}
+/*
+This is drug free community project done by falcon Team
+This page help to get requst inquery posted from the from rehSearch.php
+Then retrun back the reslut to form
+Created on 9-2015
+*/
 
+
+//get connection to access the tabl
+$parse_uri = explode( 'wp-content', $_SERVER['SCRIPT_FILENAME'] );
+require_once( $parse_uri[0] . 'wp-load.php' );
+
+
+// get posted inquery 
 $postcode = $_POST['postalcode'];
 $ageRestriction = ''; 
 $drugType = ''; 
 $srvType = '';
 
-// sql where clause
+// sql where clause to chack what have the  user select
 $condition = '';
 
 if( !empty($_POST['AR']) ){
@@ -28,23 +28,16 @@ if( !empty($_POST['AR']) ){
     $drugType = $_POST['DT'];
     $srvType = $_POST['ST'];
     
-   $condition = " AND agelimit='$ageRestriction' AND drugstype like '%$drugType%' AND servicetypes='$srvType'; ";
+   $condition = " and agelimit='$ageRestriction' and drugstype like '%$drugType%' and servicetypes='$srvType'; ";
 }
 
 
-// get lat and lng for postal code
-$xml = getLatLongFromPostcode($postcode, "AU", 'AIzaSyA5papzfh_eu6xDIvk4CLmyQ_0pDcKYJA8');
-$latitude = (double)$xml->result->geometry->location->lat;
-$longitude = (double)$xml->result->geometry->location->lng;
+// First portion of query when basic serach  occured only
 
-//echo "<h1>$latitude => $longitude</h1>";
+$sql = "SELECT * FROM  rehabilitation where postcode=$postcode  ";
 
 
-// Change connection string
-include_once 'connection.php';
-
-
-$sql = "SELECT * FROM  rehabilitation where suburbid=$postcode";
+// if advanced query occured , add the  the advanced filter to query
 
 if( !empty($condition) ){
      $sql .= $condition;
@@ -52,38 +45,41 @@ if( !empty($condition) ){
 
 //echo $sql . '<br>';
 
-if( !($results = $mysqli->query($sql, MYSQLI_STORE_RESULT) ))
-{
-    echo 'Database error';
-    return;
-}
-$numRecords =  $results->num_rows;
 
-$html = '<div class="row"><div class="col-md-8" align="center">';
-$html .= '<table class="table table-striped table-hover table-bordered" align="right"  width="80%">';
-if($numRecords > 0){
-while( $row = $results->fetch_assoc() ){
-    
-    // db angel
-    $angels = $row['longitude'] . ',' . $row['latitude'];
-    
-    $rowHtml = "<tr align='right'><td><strong>Address : </strong>{$row['address']}, {$row['suburb']},<strong>Center Name : </strong>{$row['centername']}</strong>&nbsp;&nbsp;"; 
-    $rowHtml .= "<a class='btn btn-info' href='{$row['url']}' target='_blank'>Visit Us</a>&nbsp;&nbsp;";
-    $rowHtml .= "<button class='btn btn-info' id='btnShowMap' value='Show Map' title='$angels'>Show Map</button><br><br>";
-    
-    $rowHtml .= '<div class="map-canvas" style="width:600px;height:300px;"></div>';
-    
-    $rowHtml .= "</td></tr>";
-    
-    $html .= $rowHtml;
-}
-}
-else{
-  $html .= "<br><br><h5 align='right' font='gray'>No record found</h5>";
-}
-$html .= '</table></div></div>';
-
-$mysqli->close();
 
 echo $html;
+ // to get connection to databae , gloabl conenction from wp-laod.php is needed
+ global $wpdb;
+//Fetch results as associative array
+$results = $wpdb->get_results($sql, ARRAY_A);
+
+// if no result , retrun message
+if(count($results)<=0)
+{
+
+echo " <h1 align='center'>No Record found</h1>";
+ }
+
+// if data get disply the result
+
+$html ='';
+for ($i=0; $i<count($results); $i++) 
+{
+    $rowHtml = '<div class="row"><div class="col-md-offset-1 col-md-10">';
+    $angels = $results[$i]['longitude'] . ',' . $results[$i]['latitude'];
+    
+    $rowHtml .= "<strong> Center Name: </strong>{$results[$i]['centername']} </strong>&nbsp;&nbsp;<strong> Address:</strong>{$results[$i]['Address']}, {$results[$i]['Suburb']} ";    
+    $rowHtml .= "<a class='btn btn-info' href='{$results[$i]['url']}' target='_blank'>Visit Us</a>&nbsp;&nbsp;";
+    $rowHtml .= "<button class='btn btn-info' id='btnShowMap' value='Show Map' title='$angels'>Show Map</button><br><br>";
+    
+    $rowHtml .= '<div class="map-canvas" style="height: 300px;"></div>';
+    
+    $rowHtml .= "</div></div>";
+    
+    $html .= $rowHtml;
+  
+}
+
+echo $html;
+ 
 ?>

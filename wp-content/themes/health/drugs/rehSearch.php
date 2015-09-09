@@ -1,11 +1,18 @@
 <?php
+
+/*
+This is drug free community project done by falcon Team
+the rehSearch.php page give user chnace to search based on requirement 
+ Created on 9-2015
+*/
+// to allow  worpress need to give template name
 /**
  * Template Name: rehSearch
  *
  * @package health
  */
 
-
+//searching form for rehiblation center
 
 get_header(); ?>
 
@@ -19,14 +26,22 @@ get_header(); ?>
         include_once __DIR__ . '/common.php';
         ?>
     </head>
-    <body class="container" align='center'>
+    <body class="container"  >
         <br>
-        <h2><i> Search for rehabilitation center</i></h2>
+         <h2 align="center"> Search for Rehabilitation Centre</h2>
         <br>
         <br>
         <div class="row">
-             <strong>PostCode</strong> <input type="number" id='txtPostCode' value='3109'></input>&nbsp;&nbsp;<button class="btn btn-info" id='btn-advanced' value="Advance">Advance Options</button>
-             &nbsp;&nbsp;<input type="button" class="btn btn-success" id='btn-submit' value='Submit'></button>
+            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;
+
+        <input type='text' id='txtPostCode' placeholder="Search by postcode" style="height:40px;margin:5px;width:200px;"> </input>
+        <input type="button" class="btn btn-success" id='btn-submit' value='Submit'></button>
+
+        <button class="btn btn-info" id='btn-advanced' value="Advance">Advance Options</button>
+        &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;
+        &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;
+
         </div>
         <br>
         <div class="row" id='advanceDiv' style="display:none;">
@@ -35,41 +50,41 @@ get_header(); ?>
                 <div class="col-md-4">
                     <strong>Age </strong>
                 <select id='txtAgeRestriction' name='txtAgeRestriction' style="height:30px;margin:5px;">
-                    <option value = 'All' selected>All</option>
+                    <option value = 'Any' selected>All</option>
                     <option value = 'Under-18'>Under-18</option>
                     <option value = 'Above-18'>Above-18</option>
+                    <option value = '12-25Years'>Between 12 to 25</option>
+
                 </select>
+
+               
                 </div>
                 <div class="col-md-4">
                     <strong>Drugs Type</strong>
                 <select id='txtDrugType' name='txtDrugType' style="height:30px;margin:5px;">
-                    <option value = 'All'>All</option>
-                    <option value = 'Ice' selected>Ice</option>
-                    <option value = 'Cocaine'>Cocaine</option>
-                    <option value = 'GHB'>GHB</option>
-                    <option value = 'DMT'>DMT</option>
-                    <option value = 'Ayahuasca'>Ayahuasca</option>
+                    <option value = 'Any' selected>Any</option>
                 </select>
                 </div>
                 <div class="col-md-4">
                     <strong>Service Type</strong>
                 <select id='txtServiceType' name='txtServiceType' style="height:30px;margin:5px;">
-                    <option value = 'All'>All</option>
-                    <option value = 'Resident' selected>Resident</option>
-                    <option value = 'Non-Resident'>Non-Resident</option>                    
+                    <option value = 'Any'>All</option>
+                    <option value = 'Residential' selected>Resident</option>
+                    <option value = 'Non-Residential'>Non-Resident</option>                    
                 </select>
                 </div>
             </div>
         </div>
         </div>
         <br>
-        
-        <div id='detailsDiv' >            
+         
+        <div id='detailsDiv' >  
+
          </div>
             
         </div>
         
-<div align='right'>
+ <div >
 
     <?php get_footer(); ?>
 

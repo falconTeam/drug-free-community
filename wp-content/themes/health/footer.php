@@ -10,26 +10,20 @@
 
 	</div><!-- #content -->
 
-	<footer id="colophon" class="site-footer" role="contentinfo">
+	<footer id="colophon" class="site-footer" role="contentinfo" >
 
-		
-		<div class="site-info">
-			 
-			<span class="sep"> Theme by </span>
-			<?php printf(
+		<div class="footer-right" align="right">
+ 				<a href="https://www.facebook.com/pages/Drug-Free-Community/1477313095926293" target="_blank"><i class="fa fa-facebook fa-3x"></i></a>
+				
+				<a href="https://goanimate.com/videos/0caXdGgbVVO0?utm_source=linkshare&utm_medium=linkshare&utm_campaign=usercontent" target="_blank" ><i class="fa fa-youtube fa-3x"></i></a>
+  
+			</div>
+
+			<div align="left">
+				<p>Falcon IT Solution &copy; 2015</p>
+			</div>
+
 			
-			'<strong><a href="http://dinozoom.com/">'.__('Dinozoom', 'health' ).'</a></strong>' ); ?>
-		</div><!-- .site-info -->
-
-
-<div class="devloper-info" align='right'>
-			 
-			<span class="txt"> Copyright 2015 falcon Team </span>
-			
- 
-		</div><!-- .site-info -->
-
-
 
 	</footer><!-- #colophon -->
     
