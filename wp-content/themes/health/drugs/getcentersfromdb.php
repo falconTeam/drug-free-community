@@ -23,13 +23,39 @@ $srvType = '';
 // sql where clause to chack what have the  user select
 $condition = '';
 
+
+
 if( !empty($_POST['AR']) ){
-    $ageRestriction = $_POST['AR'];
-    $drugType = $_POST['DT'];
-    $srvType = $_POST['ST'];
-    
-   $condition = " and agelimit='$ageRestriction' and drugstype like '%$drugType%' and servicetypes='$srvType'; ";
-}
+
+     $ageRestriction = $_POST['AR'];
+
+     $condition .= "and agelimit='$ageRestriction'";
+
+
+
+
+
+    }
+
+if( !empty($_POST['DT'])){
+
+     $drugType = $_POST['DT'];
+
+     $condition .= "and drugstype like '%$drugType%'";
+
+
+
+    }
+
+
+if( !empty($_POST['ST'])){
+
+     $srvType = $_POST['ST'];
+
+     $condition .= "and servicetypes='$srvType'";
+
+
+    }
 
 
 // First portion of query when basic serach  occured only

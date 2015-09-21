@@ -1617,7 +1617,7 @@ article.page {
 	margin-top:25px;
 }
 .hc_service_title h1{
-	color: #31A3DD;
+    color: black;
 }
 .hc_service_title p{
 	color: #777777;
@@ -1632,6 +1632,8 @@ article.page {
     line-height: 40px;
     margin: 2px 0 8px;
 	text-align: center;
+    color: black;
+
 }
 .hc_service_title p{
     font-size: 18px;
