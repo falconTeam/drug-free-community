@@ -14,8 +14,7 @@
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
-<link rel="stylesheet" href="css/footer-distributed.css">
-<link rel="stylesheet" href="css/font-awesome-4.4.0/css/font-awesome.min.css">
+ 
 
 <?php wp_head(); ?>
 </head>
