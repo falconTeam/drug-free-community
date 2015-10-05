@@ -35,5 +35,9 @@
             <div class="nav-foot"></div>
         </nav><!-- #site-navigation -->
     </div>
-     
-    	<div id="content" class="site-content">
+    
+    <div class="nitin-banner">
+    </div>
+
+
+	<div id="content" class="site-content">

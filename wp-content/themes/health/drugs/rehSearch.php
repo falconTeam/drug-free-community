@@ -23,23 +23,37 @@ get_header(); ?>
 <html>
     <head>
         <?php
-        include_once __DIR__ . '/common.php';
-        ?>
+        include_once __DIR__ . '/common.php'; ?>
+<script type="text/javascript">
+        $(document).ready(function(){
+                    $("#txtPostCode").autocomplete({
+                        source:'<?php bloginfo('url'); ?>/wp-content/themes/health/drugs/getautocomplete.php',
+                        minLength:1
+                    
+                    });
+                });
+        
+    </script>
     </head>
     <body class="container"  >
         <br>
-         <h2 align="center"> Search for Rehabilitation Centre</h2>
+         <div calss="box-wrapper" style="font-size: 36px;
+    font-weight: normal;
+    line-height: 40px;
+    margin: 2px 0 8px;
+    text-align: center;
+    color: black;"> Search for Rehabilitation Centre</div>
         <br>
         <br>
-        <DIV style="background: #2bb5cf; padding: 20px; border-radius: 5px;">
+        <DIV style="background: #2bb5cf; padding: 20px; border-radius: 5px; margin-left:15%; margin-right:15%;">
         <div class="row">
 
-        <input type='text' id='txtPostCode' placeholder="Search by postcode" style="height:40px;margin:5px;width:200px; margin-left: 30px;"> </input>
+        <input type='text' id='txtPostCode'   placeholder="Search by postcode" style="height:40px;margin:5px;width:200px; margin-left: 30px;" >                     
+ 
+
         <input type="button" class="btn btn-success" id='btn-submit' value='Submit'></button>
 
         <button class="btn btn-info" id='btn-advanced' value="Advance">Advance Options</button>
-         
-
         </div>
 
     
@@ -82,7 +96,14 @@ get_header(); ?>
         </DIV>
         <br>
          
-        <div id='detailsDiv' >  
+        <div align='left' id='detailsDiv' style="margin-left:10%; margin-right:10%;">  
+
+        <p>
+        <li><strong >Search for different rehabilitation service centres in Melbourne. You can optimise the search based on your needs</strong></li>
+        <li>The basic search would be based  on the Post code.</li>
+        <li >The advanced search is to improve the customer search
+        by the search filters like age, postcode, service  type and drug type</li>
+        </p>
 
          </div>
             

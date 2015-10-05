@@ -1,6 +1,6 @@
 <?php 
 if ( of_get_option( 'health_activate_services' ) or of_get_option( 'health_activate_projects' ) ) {
-	get_header();
+	get_header('M');
 	/****** get index services  ********/
 	if ( of_get_option( 'health_activate_services' ) )
 		get_template_part('index', 'services') ;

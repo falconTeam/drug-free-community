@@ -16,10 +16,12 @@
  				<a href="https://www.facebook.com/pages/Drug-Free-Community/1477313095926293" target="_blank"><i class="fa fa-facebook fa-2x"></i></a>
 				<a href="#" target="_blank"><i class="fa fa-twitter fa-2x"></i></a>
 
+
    
 			<!-- <div align="center">  -->
 			
-			|| <strong>Falcon IT Solution &copy; 2015</strong>	     
+			|| <strong>Falcon IT Solution &copy; 2015</strong>
+				     
 			<!-- 
 			 </div> 
 		     -->

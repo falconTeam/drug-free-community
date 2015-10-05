@@ -1639,6 +1639,8 @@ article.page {
     font-size: 18px;
     margin: 0px 0px 10px;
 	text-align: center;
+	 
+  
 }
 .hc_service_area {
 	float:left;
@@ -1733,6 +1735,8 @@ article.page {
     font-size: 18px;
     margin: 0 0 30px;
 	text-align: center;
+	margin-left:5em;
+	margin-right:5em;
 }
 
 /* responsive css------------------------------------------------------------ */
@@ -1866,8 +1870,8 @@ article.page {
 }
 
 .nitin-banner {
-    height: 300px;
-    background-image: url('images/15937574733_117bc014cc_o.jpg');
+    height: 250px;
+    background-image: url('images/1.jpg');
     /* background-size: 300px 100%; */
     background-repeat: no-repeat;
     background-size: 100%;

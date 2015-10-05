@@ -16,7 +16,7 @@ the index.php page  view all statiisc about drug countoffence based on GLA (gov 
 
 
 get_header(); 
-
+//get_mHeader();
  
 ?>
 <!DOCTYPE html>
@@ -137,7 +137,12 @@ function displayLocation(location) {
     <body onload="init();">
         <div> 
             <br>
-        <h1 align="center"> Drug abuse statistics  in victoria (2011/2015)  </h1>
+        <h1 style="font-size: 20px;
+    font-weight: normal;
+    line-height: 40px;
+    margin: 2px 0 8px;
+    text-align: center;
+    color: black;"> Drug abuse statistics  in victoria 2011-2015  </h1>
         <br>
                  <br>
 

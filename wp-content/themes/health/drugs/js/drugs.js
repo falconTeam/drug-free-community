@@ -78,7 +78,9 @@ $(document).ready(function(){
 });
 
 
-function SuccessMessage(response){
+
+  
+ function SuccessMessage(response){
     //alert(response);
     $('#detailsDiv').html(response);
 }

@@ -91,14 +91,14 @@ echo " <h1 align='center'>No Record found</h1>";
 $html ='';
 for ($i=0; $i<count($results); $i++) 
 {
-    $rowHtml = '<div class="row"><div class="col-md-offset-1 col-md-10">';
+    $rowHtml = '<div class="row">
+    <div class="col-md-offset-1 col-md-5">';
     $angels = $results[$i]['longitude'] . ',' . $results[$i]['latitude'];
     
-    $rowHtml .= "<strong> Center Name: </strong>{$results[$i]['centername']} </strong>&nbsp;&nbsp;<strong> Address:</strong>{$results[$i]['Address']}, {$results[$i]['Suburb']} ";    
-    $rowHtml .= "<a class='btn btn-info' href='{$results[$i]['url']}' target='_blank'>Visit Us</a>&nbsp;&nbsp;";
-    $rowHtml .= "<button class='btn btn-info' id='btnShowMap' value='Show Map' title='$angels'>Show Map</button><br><br>";
-    
-    $rowHtml .= '<div class="map-canvas" style="height: 300px;"></div>';
+    $rowHtml .= "<strong>{$results[$i]['centername']} </strong>&nbsp;&nbsp;{$results[$i]['Address']}, {$results[$i]['Suburb']} ";    
+    $rowHtml .= "<a class='btn btn-info' href='{$results[$i]['url']}' target='_blank'>Visit Us</a>   <button class='btn btn-info' id='btnShowMap' value='Show Map' title='$angels'>Show Location</button>";
+     
+    $rowHtml .= '<div class="map-canvas" style="height: 200px;"></div>';
     
     $rowHtml .= "</div></div>";
     
@@ -106,6 +106,6 @@ for ($i=0; $i<count($results); $i++)
   
 }
 
-echo $html;
+echo   $html;
  
 ?>
