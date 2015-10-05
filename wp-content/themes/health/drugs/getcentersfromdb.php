@@ -92,15 +92,23 @@ $html ='';
 for ($i=0; $i<count($results); $i++) 
 {
     $rowHtml = '<div class="row">
-    <div class="col-md-offset-1 col-md-5">';
+    <div class="col-md-offset-1 col-md-6">';
     $angels = $results[$i]['longitude'] . ',' . $results[$i]['latitude'];
     
-    $rowHtml .= "<strong>{$results[$i]['centername']} </strong>&nbsp;&nbsp;{$results[$i]['Address']}, {$results[$i]['Suburb']} ";    
-    $rowHtml .= "<a class='btn btn-info' href='{$results[$i]['url']}' target='_blank'>Visit Us</a>   <button class='btn btn-info' id='btnShowMap' value='Show Map' title='$angels'>Show Location</button>";
-     
-    $rowHtml .= '<div class="map-canvas" style="height: 200px;"></div>';
+    $rowHtml .= "<div><strong>{$results[$i]['centername']} </strong>&nbsp;&nbsp; </div>";    
     
-    $rowHtml .= "</div></div>";
+    $rowHtml .= "<div>{$results[$i]['Address']}, {$results[$i]['Suburb']}  </div>"; 
+    $rowHtml .= "<div>Service offered:{$results[$i]['servicetypes']} </div>";    
+    $rowHtml .= "<div>(03) {$results[$i]['Telephone']}  </div>"; 
+    $rowHtml .= "<div>Email:{$results[$i]['email']} </div> <br>";    
+
+   
+    $rowHtml .= "<div><a class='btn btn-info' href='{$results[$i]['url']}' target='_blank'>Visit Us</a> &nbsp;<button class='btn btn-info' id='btnShowMap' value='Show Map' title='$angels'>Show Location</button>";
+     
+    
+    $rowHtml .= '<br><div class="map-canvas" style="height: 200px;"></div>';
+    
+    $rowHtml .= "</div></div></div>";
     
     $html .= $rowHtml;
   
