@@ -1,6 +1,5 @@
-//      <script type="text/javascript">
-       
-
+        
+// jquery request 
 
 function makeRequest(url, callback) {
     var request;
@@ -19,10 +18,11 @@ function makeRequest(url, callback) {
 }
         //<![CDATA[
         
-
+//  refer to https://developers.google.com/maps/articles/phpsqlajax_v3 for more info in how to use google api to put markers in map
 var map;
  
-// Ban Jelačić Square - City Center
+// to centlized the map in middle of vic
+
  var center = new google.maps.LatLng(-36.5924573,144.5454357);
  
 var geocoder = new google.maps.Geocoder();
@@ -35,15 +35,15 @@ function init() {
       center: center,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     }
+
+ 
+  // call the json fiel to get the data
      
-    var sitepath = $('#sitepath').val();
-    url1: sitepath + "/getData.php",  
-
-
     map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
-     
-    makeRequest('url1', function(data) {
+    
+    makeRequest('<?php bloginfo('url'); ?>/wp-content/themes/health/offenceMap/getMapData.php', function(data) {
              
+ 
         var data = JSON.parse(data.responseText);
          
         for (var i = 0; i < data.length; i++) {
@@ -53,11 +53,15 @@ function init() {
 }
 //]]>
 
+// disply info in the map
 
 function displayLocation(location) {
          
     var content =   '<div class="infoWindow"><strong> '  + location.localGovernmentArea 
-                    + '<br/> Offence Count :</strong> '    + location.offenceCount + '</div>';
+                    + '<br/> Offence Count :</strong> '    + location.offenceCount + 
+                     '<br/> Rating :</strong> '    + location.id+ 
+
+                    '</div>';
      
     if (parseInt(location.latitude) == 0) {
         geocoder.geocode( { 'offenceCount': location.offenceCount }, function(results, status) {
@@ -90,4 +94,4 @@ function displayLocation(location) {
     }
 }
 
-      //  </script>
+ 

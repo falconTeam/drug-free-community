@@ -25,29 +25,7 @@ get_header();
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <title>
 Graph of offence realted to drug abuse    </title>
-<style type="text/css">
-#parent {
-    overflow: hidden;
-        margin-left: 10px;
-
-     
-}
-.right {
-    float: left;
-     
-     
-}
-.left {
-    overflow: hidden;  
-}
-
-#parent1 {
-    overflow: hidden;
-        margin-left: 10px;
-
-     
-}
-</style>
+ 
 
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -81,8 +59,8 @@ Graph of offence realted to drug abuse    </title>
         // Create and draw the visualization.
       var chart= new google.visualization.ColumnChart(document.getElementById('info')).
             draw(data, {curveType: "function",
-                        width: 400, height: 300,
-                        title: "Drug Related Crime trend  Victroa (2011-2015) ",
+                        width: 350, height: 300,
+                        title: "Offence Graph ",
                         vAxis: {maxValue: 10},
                        legend: { position: 'bottom' }}
                 );
@@ -90,24 +68,146 @@ Graph of offence realted to drug abuse    </title>
 
 
       google.setOnLoadCallback(drawVisualization);
+
+
+function drawVisualization1(str) {
+        var jsonData = null;
+
+        var json = $.ajax({
+          url: "<?php bloginfo('url'); ?>/wp-content/themes/health/offenceGraph/getData1.php?gla="+str, // make this url point to the data file
+          dataType: "json",
+          async: false,
+          success: (
+
+
+        function(data) {
+            jsonData = data;
+        })
+        }).responseText;
+
+
+
+        // Create and populate the data table.
+        var data = new google.visualization.DataTable(jsonData);
+
+
+        // Create and draw the visualization.
+      var chart= new google.visualization.ColumnChart(document.getElementById('info1')).
+            draw(data, {curveType: "function",
+                        width: 350, height: 300,
+                        title: "offence Graph  ",
+                        vAxis: {maxValue: 10},
+                       legend: { position: 'bottom' }}
+                );
+      }
+
+
+      google.setOnLoadCallback(drawVisualization1);
+
+
+
+
+  $(function () {
+    var chart;
+    $(document).ready(function() {
+        $.getJSON("<?php bloginfo('url'); ?>/wp-content/themes/health/offenceGraph/data2.php", function(json) {
+      
+        chart = new Highcharts.Chart({
+              chart: {
+                  renderTo: 'container',
+                  type: 'line',
+                  marginRight: 130,
+                  marginBottom: 25
+              },
+              title: {
+                  text: 'Drug Realtd Crime Trend ',
+                  x: -20 //center
+              },
+              subtitle: {
+                  text: '',
+                  x: -20
+              },
+              xAxis: {
+                  categories: ['2011', '2012', '2013','2014','2015']
+              },
+              yAxis: {
+                  title: {
+                      text: 'Offence Count'
+                  },
+                  plotLines: [{
+                      value: 0,
+                      width: 1,
+                      color: '#808080'
+                  }]
+              },
+              tooltip: {
+                  formatter: function() {
+                          return '<b>'+ this.series.name +'</b><br/>'+
+                          this.x +': '+ this.y;
+                  }
+              },
+              legend: {
+                  layout: 'vertical',
+                  align: 'right',
+                  verticalAlign: 'top',
+                  x: -10,
+                  y: 100,
+                  borderWidth: 0
+              },
+              series: json
+          });
+      });
+    
+    });
+    
+});
     </script>
+
   </head>
-  <body style="font-family: Arial;border: 0 none;">
+  <body >
+    <div>
+    <h1 align="center" > Drug offences Graphs  </h1>
+</div>
+<br>
+<br> 
+
+<table  >
+
+
+<tr >
+  <td colspan="3" >
     <br>
-    <h2 align="center"> Drug offences in Victoria local government area  </h2>
-
-
-
-<div id="parent">
-    <div class="right">
- 
         <br>
 
-      <strong>  Choose government area from list: </strong>
+<strong><h3>Discover drug realated crime trend :</h3></strong>
+
+  </td>
+  </tr>
+
+<tr>
+<td colspan="3" >
+<script src="<?php bloginfo('url'); ?>/wp-content/themes/health/offenceGraph/js/highcharts.js"></script>
+<script src="<?php bloginfo('url'); ?>/wp-content/themes/health/offenceGraph/js/exporting.js"></script>
+
+<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+
+</td>
+</tr>
+
+<tr >
+  <td colspan="3" >
+    <br>
         <br>
 
+<strong><h3>Compare between differnt government area :</h3></strong>
+
+  </td>
+  </tr>
+ <tr >
+<td>
+<strong>  Choose government area from list: </strong>
 <form>
-<select name="gla" size="10" onchange="drawVisualization(this.value)">
+<select name="gla" size="5" onchange="drawVisualization(this.value);" >
 <option value="ALPINE">  ALPINE  </option>
 <option value="ARARAT">  ARARAT  </option>
 <option value="BALLARAT">  BALLARAT  </option>
@@ -160,7 +260,7 @@ Graph of offence realted to drug abuse    </title>
 <option value="MOONEE VALLEY">  MOONEE VALLEY </option>
 <option value="MOORABOOL">  MOORABOOL </option>
 <option value="MORELAND">  MORELAND  </option>
-<option value="MORNINGTON PENINSULA">  MORNINGTON PENINSULA  </option>
+<option value="MORNINGTON PENINSULA">MORNINGTON PENINSULA  </option>
 <option value="MOUNT ALEXANDER">  MOUNT ALEXANDER </option>
 <option value="MOYNE">  MOYNE </option>
 <option value="MURRINDINDI">  MURRINDINDI </option>
@@ -189,30 +289,99 @@ Graph of offence realted to drug abuse    </title>
 <option value="YARRIAMBIACK">  YARRIAMBIACK  </option>
 </select>
 </form>
+ 
+ <strong> Compare To Other GLA: </strong>
+<form>
+<select name="gla" size="5" onchange="drawVisualization1(this.value);" >
+<option value="ALPINE">  ALPINE  </option>
+<option value="ARARAT">  ARARAT  </option>
+<option value="BALLARAT">  BALLARAT  </option>
+<option value="BANYULE">  BANYULE </option>
+<option value="BASS COAST">  BASS COAST  </option>
+<option value="BAW BAW">  BAW BAW </option>
+<option value="BAYSIDE">  BAYSIDE </option>
+<option value="BENALLA">  BENALLA </option>
+<option value="BOROONDARA">  BOROONDARA  </option>
+<option value="BRIMBANK">  BRIMBANK  </option>
+<option value="BULOKE">  BULOKE  </option>
+<option value="CAMPASPE">  CAMPASPE  </option>
+<option value="CARDINIA">  CARDINIA  </option>
+<option value="CASEY">  CASEY </option>
+<option value="CENTRAL GOLDFIELDS">  CENTRAL GOLDFIELDS  </option>
+<option value="COLAC-OTWAY">  COLAC-OTWAY </option>
+<option value="CORANGAMITE">  CORANGAMITE </option>
+<option value="DAREBIN">  DAREBIN </option>
+<option value="EAST GIPPSLAND">  EAST GIPPSLAND  </option>
+<option value="FRANKSTON ">  FRANKSTON </option>
+<option value="GANNAWARRA">  GANNAWARRA  </option>
+<option value="GLEN EIRA">  GLEN EIRA </option>
+<option value="GLENELG">  GLENELG </option>
+<option value="GOLDEN PLAINS">  GOLDEN PLAINS </option>
+<option value="GREATER BENDIGO">  GREATER BENDIGO </option>
+<option value="GREATER DANDENONG">  GREATER DANDENONG </option>
+<option value="GREATER GEELONG">  GREATER GEELONG </option>
+<option value="GREATER SHEPPARTON">  GREATER SHEPPARTON  </option>
+<option value="HEPBURN">  HEPBURN </option>
+<option value="HINDMARSH">  HINDMARSH </option>
+<option value="HOBSONS BAY">  HOBSONS BAY </option>
+<option value="HORSHAM">  HORSHAM </option>
+<option value="HUME">  HUME  </option>
+<option value="INDIGO">  INDIGO  </option>
+<option value="KINGSTON">  KINGSTON  </option>
+<option value="KNOX">  KNOX  </option>
+<option value="LATROBE">  LATROBE </option>
+<option value="LODDON">  LODDON  </option>
+<option value="MACEDON RANGES">  MACEDON RANGES  </option>
+<option value="MANNINGHAM">  MANNINGHAM  </option>
+<option value="MANSFIELD">  MANSFIELD </option>
+<option value="MARIBYRNONG">  MARIBYRNONG </option>
+<option value="MAROONDAH">  MAROONDAH </option>
+<option value="MELBOURNE">  MELBOURNE </option>
+<option value="MELTON">  MELTON  </option>
+<option value="MILDURA">  MILDURA </option>
+<option value="MITCHELL">  MITCHELL  </option>
+<option value="MOIRA">  MOIRA </option>
+<option value="MONASH">  MONASH  </option>
+<option value="MOONEE VALLEY">  MOONEE VALLEY </option>
+<option value="MOORABOOL">  MOORABOOL </option>
+<option value="MORELAND">  MORELAND  </option>
+<option value="MORNINGTON PENINSULA">MORNINGTON PENINSULA  </option>
+<option value="MOUNT ALEXANDER">  MOUNT ALEXANDER </option>
+<option value="MOYNE">  MOYNE </option>
+<option value="MURRINDINDI">  MURRINDINDI </option>
+<option value="NILLUMBIK">  NILLUMBIK </option>
+<option value="NORTHERN GRAMPIANS">  NORTHERN GRAMPIANS  </option>
+<option value="PORT PHILLIP">  PORT PHILLIP  </option>
+<option value="PYRENEES">  PYRENEES  </option>
+<option value="QUEENSCLIFFE">  QUEENSCLIFFE  </option>
+<option value="SOUTH GIPPSLAND">  SOUTH GIPPSLAND </option>
+<option value="SOUTHERN GRAMPIANS">  SOUTHERN GRAMPIANS  </option>
+<option value="STONNINGTON">  STONNINGTON </option>
+<option value="STRATHBOGIE">  STRATHBOGIE </option>
+<option value="SURF COAST">  SURF COAST  </option>
+<option value="SWAN HILL">  SWAN HILL </option>
+<option value="TOWONG">  TOWONG  </option>
+<option value="WANGARATTA">  WANGARATTA  </option>
+<option value="WARRNAMBOOL">  WARRNAMBOOL </option>
+<option value="WELLINGTON">  WELLINGTON  </option>
+<option value="WEST WIMMERA">  WEST WIMMERA  </option>
+<option value="WHITEHORSE">  WHITEHORSE  </option>
+<option value="WHITTLESEA">  WHITTLESEA  </option>
+<option value="WODONGA">  WODONGA </option>
+<option value="WYNDHAM">  WYNDHAM </option>
+<option value="YARRA">  YARRA </option>
+<option value="YARRA RANGES">  YARRA RANGES  </option>
+<option value="YARRIAMBIACK">  YARRIAMBIACK  </option>
+</select>
+</form>
+</td>
+
+<td><div  id="info" class="Column"></div></td>
+<td><div  id="info1" class="Column"></div></td>
 </div>
- <div class="right" id="info">.. 
- </div>
- </div>   
-
-<div style="margin-left: auto;
-    margin-right: auto;
-    width: 40em">
-Latest statistics shows an increase of offence related to drug abuse in Victoria. There are some area which shows dramatical increase
-while other shows marginal increase of offence. This statistics displays the drug offence in Victoria from last five years(2011-2015).
-These data has been obtained from crims statistics data source. 
-
-</div>
-<br>
-<div>
-  <div align="center">
-    
-        <a href="<?php bloginfo('url'); ?>/index.php/suburbprofile/" style="border: 2px solid #a1a1a1;  padding: 10px 40px;  background: #dddddd; width: 50px; border-radius: 25px;">
-       Offence  Map </a> 
-
-       <a href="<?php bloginfo('url'); ?>/index.php/offence/" style="border: 2px solid #a1a1a1;  padding: 10px 40px;  background: #dddddd; width: 50px; border-radius: 25px;">
-         Offence    Graph     </a>
-     </div>
-   </div>
+</tr>
+</table>
+ 
 </body>
 
 </html>

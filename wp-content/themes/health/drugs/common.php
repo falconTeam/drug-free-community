@@ -11,5 +11,3 @@ $sitepath = get_template_directory_uri().'/drugs'
  <script type="text/javascript" src='<?=$sitepath;?>/js/drugs.js'></script>
  <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
  <input type='hidden' id='sitepath' value="<?=$sitepath;?>"></input>
-
- 

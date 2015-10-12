@@ -1,5 +1,4 @@
 <?php
-
 /*
 This is drug free community project done by falcon Team
 the rehSearch.php page give user chnace to search based on requirement 
@@ -11,16 +10,13 @@ the rehSearch.php page give user chnace to search based on requirement
  *
  * @package health
  */
-
 //searching form for rehiblation center
-
 get_header(); ?>
 
 
 <!-- Refer https://developers.google.com/maps/documentation/geocoding/intro -->
 <!-- Refer for plotting numbers of point http://webapps.stackexchange.com/questions/12475/how-do-i-plot-a-bunch-of-points-on-google-maps -->
-<!DocType html>
-<html>
+ <html>
     <head>
         <?php
         include_once __DIR__ . '/common.php'; ?>
@@ -96,7 +92,7 @@ get_header(); ?>
         </DIV>
         <br>
          
-        <div align='left' id='detailsDiv' style="margin-left:10%; margin-right:10%;">  
+        <div align='left' id='detailsDiv' style="margin-left:10%; ">  
 
         <p>
         <li><strong >Search for different rehabilitation service centres in Melbourne. You can optimise the search based on your needs</strong></li>
@@ -117,4 +113,3 @@ get_header(); ?>
 
     </body>
 </html>
-

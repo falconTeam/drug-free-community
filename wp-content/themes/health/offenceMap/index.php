@@ -19,8 +19,7 @@ get_header();
 //get_mHeader();
  
 ?>
-<!DOCTYPE html>
- 
+  
 <html lang="en">
     <head>
  
@@ -145,6 +144,8 @@ function displayLocation(location) {
     color: black;"> Drug abuse statistics  in victoria 2011-2015  </h1>
         <br>
                  <br>
+                 
+     
 
         <section id="sidebar">
             <div id="directions_panel"></div>
@@ -166,19 +167,7 @@ function displayLocation(location) {
       
       </div>
      
-   <div align="center" >
-    
-        <a href="<?php bloginfo('url'); ?>/index.php/suburbprofile/" style="border: 2px solid #a1a1a1;  padding: 10px 40px;  background: #dddddd; width: 50px; border-radius: 25px;">
-       Offence  Map </a> 
-
-       <a href="<?php bloginfo('url'); ?>/index.php/offence/" style="border: 2px solid #a1a1a1;  padding: 10px 40px;  background: #dddddd; width: 50px; border-radius: 25px;">
-         Offence    Graph     </a> 
-
-       
-     
-      
-  
-     </div>
+   
           
     </body>
     
