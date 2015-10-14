@@ -31,7 +31,7 @@ get_header(); ?>
         
     </script>
     </head>
-    <body class="container"  >
+    <body class="container"   >
         <br>
          <div calss="box-wrapper" style="font-size: 36px;
     font-weight: normal;
@@ -41,10 +41,10 @@ get_header(); ?>
     color: black;"> Search for Rehabilitation Centre</div>
         <br>
         <br>
-        <DIV style="background: #2bb5cf; padding: 20px; border-radius: 5px; margin-left:15%; margin-right:15%;">
+        <DIV style="background: #2bb5cf; padding: 30px; border-radius: 5px; margin-left:15%; margin-right:15%;">
         <div class="row">
 
-        <input type='text' id='txtPostCode'   placeholder="Search by postcode" style="height:40px;margin:5px;width:200px; margin-left: 30px;" >                     
+        <input type='text' id='txtPostCode' name='txtPostCode'  placeholder="Search by postcode" style="height:40px;margin:5px;width:200px; margin-left: 30px;" >                     
  
 
         <input type="button" class="btn btn-success" id='btn-submit' value='Submit'></button>
@@ -89,10 +89,10 @@ get_header(); ?>
         </div>
         </div>
 
-        </DIV>
+        </div>
         <br>
          
-        <div align='left' id='detailsDiv' style="margin-left:10%; ">  
+        <div id='detailsDiv' style='margin-left:10%;  '>  
 
         <p>
         <li><strong >Search for different rehabilitation service centres in Melbourne. You can optimise the search based on your needs</strong></li>

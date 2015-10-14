@@ -21,7 +21,7 @@
 define('WP_HOME', 'http://104.43.232.253/');
 define('WP_SITEURL', 'http://104.43.232.253/');
  //define('WP_HOME', 'http://localhost/wordpress');
- //define('WP_SITEURL', 'http://localhost/wordpress');
+// define('WP_SITEURL', 'http://localhost/wordpress');
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */

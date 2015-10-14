@@ -63,6 +63,8 @@
 	margin: 0;
 	display:block;
 	float: left;
+	margin-left: 23%;
+	margin-top: 25%;
 }
 .ui-menu .ui-menu {
 	margin-top: -3px;

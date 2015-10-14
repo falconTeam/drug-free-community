@@ -1,5 +1,4 @@
 <?php
-
 /*
  *This is drug free community project done by falcon Team
  *the index.php page  view all statiisc about drug countoffence based on GLA (gov lcoal area)
@@ -10,12 +9,8 @@
  *
  * @package health
  */
-
 // view staisitc of drugabuse based on GLA and show as graph
-
-
 get_header(); 
-
  
 ?>
 
@@ -37,76 +32,67 @@ Graph of offence realted to drug abuse    </title>
     //  refer to https://developers.google.com/chart/interactive/docs/drawing_charts 
       function drawVisualization(str) {
         var jsonData = null;
-
         var json = $.ajax({
           url: "<?php bloginfo('url'); ?>/wp-content/themes/health/offenceGraph/getData.php?gla="+str, // make this url point to the data file
           dataType: "json",
           async: false,
           success: (
-
-
         function(data) {
             jsonData = data;
         })
         }).responseText;
-
-
-
         // Create and populate the data table.
         var data = new google.visualization.DataTable(jsonData);
-
-
         // Create and draw the visualization.
       var chart= new google.visualization.ColumnChart(document.getElementById('info')).
             draw(data, {curveType: "function",
                         width: 350, height: 300,
+                    
                         title: "Offence Graph ",
-                        vAxis: {maxValue: 10},
+                        vAxis: {maxValue: 10,gridlines: {
+        color: 'transparent'
+    }},
+    hAxis:{format: '',
+      gridlines:{
+        color: 'transparent'
+      }
+
+    },
+
                        legend: { position: 'bottom' }}
                 );
       }
-
-
       google.setOnLoadCallback(drawVisualization);
-
-
 function drawVisualization1(str) {
         var jsonData = null;
-
         var json = $.ajax({
           url: "<?php bloginfo('url'); ?>/wp-content/themes/health/offenceGraph/getData1.php?gla="+str, // make this url point to the data file
           dataType: "json",
           async: false,
           success: (
-
-
         function(data) {
             jsonData = data;
         })
         }).responseText;
-
-
-
         // Create and populate the data table.
         var data = new google.visualization.DataTable(jsonData);
-
-
         // Create and draw the visualization.
       var chart= new google.visualization.ColumnChart(document.getElementById('info1')).
             draw(data, {curveType: "function",
                         width: 350, height: 300,
-                        title: "offence Graph  ",
-                        vAxis: {maxValue: 10},
+                        title: "Offence Graph  ",
+                        vAxis: {maxValue: 10,gridlines: {
+        color: 'transparent'
+    }},
+    hAxis:{format: '',
+      gridlines:{
+        color: 'transparent'
+      }
+    },
                        legend: { position: 'bottom' }}
                 );
       }
-
-
       google.setOnLoadCallback(drawVisualization1);
-
-
-
-
   $(function () {
     var chart;
     $(document).ready(function() {
@@ -117,10 +103,10 @@ function drawVisualization1(str) {
                   renderTo: 'container',
                   type: 'line',
                   marginRight: 130,
-                  marginBottom: 25
+                  marginBottom: 45
               },
               title: {
-                  text: 'Drug Realtd Crime Trend ',
+                  text: 'Drug Related Crime Trend ',
                   x: -20 //center
               },
               subtitle: {
@@ -146,12 +132,13 @@ function drawVisualization1(str) {
                           this.x +': '+ this.y;
                   }
               },
+
               legend: {
-                  layout: 'vertical',
-                  align: 'right',
-                  verticalAlign: 'top',
-                  x: -10,
-                  y: 100,
+                  layout: 'horizontal',
+                  align: 'center',
+                  verticalAlign: 'bottom',
+                  x: -45,
+                  y: 20,
                   borderWidth: 0
               },
               series: json
@@ -166,20 +153,20 @@ function drawVisualization1(str) {
   </head>
   <body >
     <div>
-    <h1 align="center" > Drug offences Graphs  </h1>
+      <br>
+    <h1 align="Center" > Drug offences Graphs  </h1>
 </div>
-<br>
-<br> 
+ 
+<div style=" margin-left:5%; margin-right:5%;">
 
-<table  >
+<table>
 
 
 <tr >
   <td colspan="3" >
     <br>
-        <br>
 
-<strong><h3>Discover drug realated crime trend :</h3></strong>
+<?php//<strong><h3>Drug related crime trends</h3></strong>?>
 
   </td>
   </tr>
@@ -197,17 +184,16 @@ function drawVisualization1(str) {
 <tr >
   <td colspan="3" >
     <br>
-        <br>
 
-<strong><h3>Compare between differnt government area :</h3></strong>
+<strong><h3>Compare two different Government Area in Victoria</h3></strong>
 
   </td>
   </tr>
  <tr >
 <td>
-<strong>  Choose government area from list: </strong>
+<?php//<h3>  Choose government area from list</h3>?>
 <form>
-<select name="gla" size="5" onchange="drawVisualization(this.value);" >
+<select name="gla" size="6" onchange="drawVisualization(this.value);" >
 <option value="ALPINE">  ALPINE  </option>
 <option value="ARARAT">  ARARAT  </option>
 <option value="BALLARAT">  BALLARAT  </option>
@@ -290,9 +276,9 @@ function drawVisualization1(str) {
 </select>
 </form>
  
- <strong> Compare To Other GLA: </strong>
+ <h2 align=center> Vs </h2>
 <form>
-<select name="gla" size="5" onchange="drawVisualization1(this.value);" >
+<select name="gla" size="6" onchange="drawVisualization1(this.value);" >
 <option value="ALPINE">  ALPINE  </option>
 <option value="ARARAT">  ARARAT  </option>
 <option value="BALLARAT">  BALLARAT  </option>
@@ -381,10 +367,8 @@ function drawVisualization1(str) {
 </div>
 </tr>
 </table>
- 
+ </div>
 </body>
 
 </html>
  <? get_footer();  ?>
-
- 

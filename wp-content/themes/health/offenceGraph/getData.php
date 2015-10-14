@@ -41,9 +41,9 @@ for ($i=0; $i<count($results); $i++) {
     // ciolum inserted in temp array
 
 
-    $temp[] = array('v' => $results[$i]['year']);
+    $temp[] = array('v' =>  $results[$i]['year']);
 
-    $temp[] = array('v' => (int) $results[$i]['OffenceCount']); 
+    $temp[] = array('v' =>   $results[$i]['OffenceCount']); 
 
     // iput temp arrry to rwo
     $rows[] = array('c' => $temp);
