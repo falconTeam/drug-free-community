@@ -166,7 +166,7 @@ function drawVisualization1(str) {
   <td colspan="3" >
     <br>
 
-<?php//<strong><h3>Drug related crime trends</h3></strong>?>
+
 
   </td>
   </tr>
@@ -191,8 +191,7 @@ function drawVisualization1(str) {
   </tr>
  <tr >
 <td>
-<?php//<h3>  Choose government area from list</h3>?>
-<form>
+ <form>
 <select name="gla" size="6" onchange="drawVisualization(this.value);" >
 <option value="ALPINE">  ALPINE  </option>
 <option value="ARARAT">  ARARAT  </option>
