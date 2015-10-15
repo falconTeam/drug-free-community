@@ -157,6 +157,8 @@ function displayLocation(location) {
       </div> 
       <br>
       <div>
+               
+
         <p style="text-align: justify; margin-right: 100px ; margin-left: 100px ;"> 
      Drugs and drug related crimes are being more frequently flashed in Victoria News channels.  
      As per information from the Victoria’s crime report two of every three offenders detained by the police 
